@@ -5,6 +5,9 @@ tools {
         jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
          
     }
+environment {
+    JAVA_HOME = '/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home'
+  }
  
   stages {
  stage('Check Java Version') {
