@@ -1,4 +1,7 @@
-FROM adoptopenjdk/openjdk11:alpine-slim as build
+#FROM adoptopenjdk/openjdk11:alpine-slim as build
+# Use an OpenJDK 17 base image
+FROM openjdk:17-jdk-slim as build
+
 WORKDIR /workspace/app
 
 COPY mvnw .
@@ -9,7 +12,8 @@ COPY src src
 RUN ./mvnw install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
-FROM adoptopenjdk/openjdk11:alpine-slim
+#FROM adoptopenjdk/openjdk11:alpine-slim
+FROM openjdk:17-jdk-slim as build
 VOLUME /tmp
 ARG DEPENDENCY=/workspace/app/target/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
