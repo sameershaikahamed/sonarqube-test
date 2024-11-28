@@ -4,20 +4,16 @@ pipeline {
     maven 'maven' // Ensure Maven is configured in Global Tool Configuration
     jdk 'jdk17'   // Must match the name defined in Global Tool Configuration
   }
-  environment {
-    JAVA_HOME ='/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home'
-    PATH = "${JAVA_HOME}/bin:${env.PATH}" // Ensure JDK 17 is prioritized
-  }
+ 
   stages {
     stage('Verify Java Version') {
       steps {
         sh '''
-          echo "PATH: $PATH"
-          echo "JAVA_HOME: $JAVA_HOME"
-          which java
-          java -version
-          mvn -v
-        '''
+                    env | grep -e PATH -e JAVA_HOME
+                    which java
+                    java -version
+                    mvn -v
+                '''
       }
     }
   }
