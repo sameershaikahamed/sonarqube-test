@@ -2,13 +2,13 @@ pipeline {
   agent any
 tools {
         maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
-        jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
+        //jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
          
     }
-/*environment {
+environment {
     JAVA_HOME = '/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home'
     PATH = "${JAVA_HOME}/bin:${env.PATH}"
-  }*/
+  }
  
   stages {
  stage('Check Java Version') {
