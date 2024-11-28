@@ -27,7 +27,7 @@ tools {
         withSonarQubeEnv(installationName: 'SonarQube_Server') { 
           //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
           //sh './mvnw -o clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-            sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.8.0.2131:sonar'
+            sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
         }
       }
     }
