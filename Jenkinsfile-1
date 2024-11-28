@@ -5,7 +5,7 @@ pipeline {
     jdk 'jdk17'   // Must match the name defined in Global Tool Configuration
   }
   environment {
-    JAVA_HOME = tool name: 'jdk17', type: 'JDK'
+    JAVA_HOME ='/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home'
     PATH = "${JAVA_HOME}/bin:${env.PATH}" // Ensure JDK 17 is prioritized
   }
   stages {
