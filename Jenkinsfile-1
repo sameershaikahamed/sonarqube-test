@@ -29,8 +29,8 @@ tools {
           //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
           //sh './mvnw -o clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
             //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-       //sh 'mvn clean install sonar:sonar'
-     sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar -DskipTests'
+       sh 'mvn clean install sonar:sonar -DskipTests'
+   //  sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar -DskipTests'
         }
       }
     }
