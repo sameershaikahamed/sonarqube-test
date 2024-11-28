@@ -15,7 +15,10 @@ environment {
                 steps {
                     sh 'java -version'
                   sh 'mvn -version'
-                }
+           echo "JAVA_HOME  : ${JAVA_HOME}"
+       echo "PATH  : ${PATH}"
+
+}
             }
     stage('Scan') {
       steps {
