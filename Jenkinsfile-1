@@ -4,6 +4,10 @@ pipeline {
     maven 'maven' // Ensure Maven is configured in Global Tool Configuration
     jdk 'jdk17'   // Must match the name defined in Global Tool Configuration
   }
+  environment {
+    JAVA_HOME = tool name: 'jdk17', type: 'JDK'
+    PATH = "${JAVA_HOME}/bin:${env.PATH}" // Ensure JDK 17 is prioritized
+  }
   stages {
     stage('Verify Java Version') {
       steps {
