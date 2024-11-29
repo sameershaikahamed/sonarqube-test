@@ -1,5 +1,5 @@
 # Use OpenJDK 17 as the base image for the build
-FROM openjdk:17.0.13-jdk-slim as build
+FROM openjdk:17-jdk-slim as build
 
 WORKDIR /workspace/app
 
@@ -12,7 +12,7 @@ RUN ./mvnw install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 # Runtime stage with JDK 17
-FROM openjdk:17.0.13-jdk-slim as runtime
+FROM openjdk:17-jdk-slim as runtime
 VOLUME /tmp
 ARG DEPENDENCY=/workspace/app/target/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
