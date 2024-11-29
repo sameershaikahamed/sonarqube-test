@@ -26,19 +26,15 @@ pipeline {
  
     stage('Verify Java Version') {
       steps {
-            sh '''
-                apt update
-                apt install -y curl
-                java -version
-                '''
+           
         //  sh 'sudo apt update && sudo apt install openjdk-17-jdk -y'
           //sh 'export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home && export PATH=$JAVA_HOME/bin:$PATH'
-          //sh '''
-                     // env | grep -e PATH -e JAVA_HOME
-                     // which java
-                     // java -version
-                     // mvn -v
-                  //'''
+          sh '''
+                     env | grep -e PATH -e JAVA_HOME
+                     which java
+                      java -version
+                      mvn -v
+                  '''
  
       }
     }
