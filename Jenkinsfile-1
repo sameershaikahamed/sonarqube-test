@@ -1,9 +1,6 @@
 pipeline {
   agent any
-    environment {
-        JAVA_HOME = '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home'  // Adjust as needed
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
-    }
+     
   tools {
     maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
    // jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
