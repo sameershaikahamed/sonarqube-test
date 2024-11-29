@@ -1,9 +1,5 @@
 pipeline {
-  agent {
- docker {
-            image 'jenkins_server'
-        }
-}
+  agent any
   tools {
     maven 'maven' // Ensure Maven is configured in Global Tool Configuration
     jdk 'jdk17'   // Must match the name defined in Global Tool Configuration
