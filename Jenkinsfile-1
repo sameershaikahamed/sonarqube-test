@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {
     maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
-    jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
+    //jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
   }
   environment {
     JAVA_HOME = tool name: 'jdk17', type: 'JDK'
@@ -20,18 +20,27 @@ pipeline {
         '''
       }
     }
-    stage('Check Java Version') {
+  
+ 
+  stages {
+    stage('Verify Java Version') {
       steps {
-        sh 'java -version'
-        sh 'mvn -version'
+        sh '''
+                    env | grep -e PATH -e JAVA_HOME
+                    which java
+                    java -version
+                    mvn -v
+                '''
+ 
       }
     }
-    stage('Scan') {
+ stage('Scan') {
       steps {
-        withSonarQubeEnv(installationName: 'SonarQube_Server') { 
-          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+        withSonarQubeEnv(installationName: 'SonarQube_Server') {
+       sh 'mvn clean install sonar:sonar -DskipTests'
         }
-      }
-    }
+        }
+        }
+
   }
 }
