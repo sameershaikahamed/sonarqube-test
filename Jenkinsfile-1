@@ -30,13 +30,31 @@ pipeline {
  
       }
     }
- stage('Scan') {
+
+    stage('Scan') {
       steps {
+   withSonarQubeEnv(credentialsId:'sonarqube-sever-token-ID' , installationName: 'SonarQube_Server') {
+      sh "mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube-test -Dsonar.projectName='sonarqube-test'"
+    }
+ 
+      }
+    }
+ /*stage('Scan') {
+ 
+   // def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube-test -Dsonar.projectName='sonarqube-test'"
+    }
+  }*/
+      /*steps {
         withSonarQubeEnv(installationName: 'SonarQube_Server') {
        sh 'mvn clean install sonar:sonar -DskipTests'
         }
+        }*/
         }
-        }
-
-  }
 }
+  
+
+
+
+ 
