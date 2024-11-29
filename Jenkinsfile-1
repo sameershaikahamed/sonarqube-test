@@ -16,5 +16,13 @@ pipeline {
                 '''
       }
     }
+ stage('Scan') {
+      steps {
+        withSonarQubeEnv(installationName: 'SonarQube_Server') {
+       sh 'mvn clean install sonar:sonar -DskipTests'
+        }
+        }
+        }
+
   }
 }
