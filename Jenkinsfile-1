@@ -42,10 +42,10 @@ pipeline {
        sh 'mvn clean install sonar:sonar -DskipTests'
         }
         }*/
-        //}
-
-  
+        }
 }
+  
+
 
 
  
