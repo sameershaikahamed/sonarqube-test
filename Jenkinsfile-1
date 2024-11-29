@@ -5,7 +5,7 @@ pipeline {
     jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
   }
   stages {
-    stage('JAVA PATH') {
+   /* stage('JAVA PATH') {
       steps {
         sh '''
           echo "PATH: $PATH"
@@ -15,7 +15,7 @@ pipeline {
           mvn -v
         '''
       }
-    }
+    }*/
   
  
  
