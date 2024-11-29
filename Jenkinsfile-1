@@ -1,4 +1,4 @@
-/*pipeline {
+pipeline {
   agent any
   tools {
     maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
@@ -31,25 +31,21 @@
       }
     }
  stage('Scan') {
-      steps {
-        withSonarQubeEnv(installationName: 'SonarQube_Server') {
-       sh 'mvn clean install sonar:sonar -DskipTests'
-        }
-        }
-        }
-
-  }
-}*/
-
-
-node {
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
+ 
     def mvn = tool 'Default Maven';
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube-test -Dsonar.projectName='sonarqube-test'"
     }
   }
+      /*steps {
+        withSonarQubeEnv(installationName: 'SonarQube_Server') {
+       sh 'mvn clean install sonar:sonar -DskipTests'
+        }
+        }*/
+        //}
+
+  }
 }
+
+
+ 
