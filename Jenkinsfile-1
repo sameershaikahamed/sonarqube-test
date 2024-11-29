@@ -4,10 +4,6 @@ pipeline {
     maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
     //jdk 'jdk17'   // Name should match the name configured in Global Tool Configuration for JDK 17
   }
-  environment {
-    JAVA_HOME = tool name: 'jdk17', type: 'JDK'
-    PATH = "${JAVA_HOME}/bin:${env.PATH}" // Prepend JAVA_HOME/bin to the PATH
-  }
   stages {
     stage('JAVA PATH') {
       steps {
