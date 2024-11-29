@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
   agent any
   tools {
     maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
@@ -38,5 +38,18 @@ pipeline {
         }
         }
 
+  }
+}*/
+
+
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube-test -Dsonar.projectName='sonarqube-test'"
+    }
   }
 }
