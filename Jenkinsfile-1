@@ -22,7 +22,7 @@ pipeline {
     }
   
  
-  stages {
+ 
     stage('Verify Java Version') {
       steps {
         sh '''
