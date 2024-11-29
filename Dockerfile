@@ -5,7 +5,7 @@ FROM jenkins/jenkins:2.401.3 as jenkins-base
 USER root
 
 # Update system and replace JDK 11 with JDK 17
-RUN apt-get update && apt-get remove -y openjdk-11-jdk && \
+RUN apt-get update && apt-get remove -y openjdk-11.0.19-jdk && \
     apt-get install -y openjdk-17-jdk && \
     apt-get clean
 
