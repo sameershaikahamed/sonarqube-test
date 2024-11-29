@@ -33,7 +33,7 @@ pipeline {
 
     stage('Scan') {
       steps {
-   withSonarQubeEnv(credentialsId:'sonarqube-sever-token-ID' installationName: 'SonarQube_Server') {
+   withSonarQubeEnv(credentialsId:'sonarqube-sever-token-ID' , installationName: 'SonarQube_Server') {
       sh "/Users/sameer.shaik/apache-maven-3.9.9/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube-test -Dsonar.projectName='sonarqube-test'"
     }
  
