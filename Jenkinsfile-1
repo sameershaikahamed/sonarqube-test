@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-        docker {
-            image 'openjdk:17' // Or your custom image
-        }
-    }
+  agent any
     environment {
         JAVA_HOME = '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home'  // Adjust as needed
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
@@ -30,12 +26,14 @@ pipeline {
  
     stage('Verify Java Version') {
       steps {
-        sh '''
-                    env | grep -e PATH -e JAVA_HOME
-                    which java
-                    java -version
-                    mvn -v
-                '''
+          sh 'sudo apt update && sudo apt install openjdk-17-jdk -y'
+          sh 'export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home && export PATH=$JAVA_HOME/bin:$PATH'
+          sh '''
+                      env | grep -e PATH -e JAVA_HOME
+                      which java
+                      java -version
+                      mvn -v
+                  '''
  
       }
     }
