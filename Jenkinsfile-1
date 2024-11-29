@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {
     maven 'maven' // Ensure Maven is configured in Global Tool Configuration
-    //jdk 'jdk17'   // Must match the name defined in Global Tool Configuration
+    jdk 'jdk17'   // Must match the name defined in Global Tool Configuration
   }
  
   stages {
@@ -16,13 +16,13 @@ pipeline {
                 '''
       }
     }
- stage('Scan') {
+ /*stage('Scan') {
       steps {
         withSonarQubeEnv(installationName: 'SonarQube_Server') {
        sh 'mvn clean install sonar:sonar -DskipTests'
         }
         }
-        }
+        }*/
 
   }
 }
